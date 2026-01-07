@@ -1,0 +1,8 @@
+#Compile and Run
+gn gen out/debug
+ninja -C out/debug
+./out/debug/websocket_client.exe --url wss://echo.websocket.org
+
+#Running Tests
+ninja -C out/debug tests
+./out/debug/tests.exe

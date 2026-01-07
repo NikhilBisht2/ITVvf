@@ -1,0 +1,50 @@
+executable("websocket_client") {
+  sources = [
+    "src/main.cpp",
+    "src/websocket_client.cpp",
+    "src/websocket_frame.cpp",
+    "src/utils.cpp",
+    "src/url_mgt.cpp",
+  ]
+
+  include_dirs = [
+    "src",
+    "C:/tools/OpenSSL-Win64/include",
+  ]
+
+  lib_dirs = [
+    "C:/tools/OpenSSL-Win64/lib/VC/x64/MD",
+  ]
+
+  libs = [
+    "ws2_32",
+    "libssl",
+    "libcrypto",
+  ]
+  
+  # Ensure we use standard C++
+  cflags = [ "-std=c++17" ]
+}
+
+executable("tests") {
+    testonly = true
+    sources = [ 
+        "tests/test_framing.cpp",
+        "src/websocket_frame.cpp",
+    ]
+    
+    include_dirs = [
+        "src",
+        "C:/tools/OpenSSL-Win64/include",
+    ]
+
+    lib_dirs = [
+        "C:/tools/OpenSSL-Win64/lib/VC/x64/MD",
+    ]
+
+    libs = [
+        "ws2_32",
+        "libssl",
+        "libcrypto",
+    ]
+}
